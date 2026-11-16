@@ -67,6 +67,15 @@ window.COGNASIUM_CONFIG = {
   /* ---------- Moving ribbon under the hero (real Cognasium programmes) -- */
   marquee: ["Parliamentary Debate", "APD · BPD · WSDC", "Model UN", "Creative Writing", "Public Speaking", "Current Affairs", "Pocket Courses", "Individual Classes", "Practice Debates"],
 
+  /* ---------- Tracking ------------------------------------------------
+     Meta Pixel 4022027848040743 is installed in index.html <head>.
+     Each WhatsApp button tap fires the custom event below plus the standard
+     "Contact" event. Keep event names without spaces. */
+  tracking: {
+    whatsappEvent: "ConversionWhatsAppButton",
+    alsoSendContact: true
+  },
+
   /* ---------- Enquiry forms (Bigin), from the Google Doc ---------------
      NOTE: the doc gives the "cognasium-60-current-affairs-enquiry" form as the
      form for debate training. It is used for both until Cognasium confirms

@@ -519,4 +519,22 @@
     eio.observe(document.querySelector(".final"));
     eio.observe(document.querySelector(".site-footer"));
   }
+
+  /* --- WhatsApp click tracking (Meta Pixel) ---
+     Every tap on any WhatsApp link (header, quiz result, price cards, final CTA,
+     sticky bar) sends:
+       - custom event  "ConversionWhatsAppButton"  (name set in config.js → tracking)
+       - standard event "Contact"  (lets Meta Ads optimise without extra setup)
+     with a "button" parameter saying which button was tapped. */
+  var TR = C.tracking || {};
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
+    if (!a || typeof window.fbq !== "function") return;
+    var params = {
+      button: a.id || (a.closest("[id]") ? a.closest("[id]").id : "whatsapp"),
+      button_text: (a.textContent || "").trim().slice(0, 60)
+    };
+    window.fbq("trackCustom", TR.whatsappEvent || "ConversionWhatsAppButton", params);
+    if (TR.alsoSendContact !== false) window.fbq("track", "Contact", params);
+  });
 })();
