@@ -163,17 +163,16 @@ switch `robots` to `noindex, follow`, set `canonical`/`og:url` to `/book/`, and 
    - A countdown card appears above the questions only when a real session date is set.
 4. **What you get:** five cards.
 5. **How it works:** three steps.
-6. **The problem, plus a "Who we train" card.** A sample feedback card is built but switched off.
-7. **Pricing:** International Debating ₹4,500 a month and Current Affairs ₹2,500 a month.
-8. **Why families choose Cognasium:**
-   - Classroom photo and the site's tagline.
-   - The five programmes and the vision pillars.
-   - Stats and coach cards are hidden until real data is added.
-9. **Testimonials:** the five published on cognasiumindia.com.
-10. **FAQ:** four questions.
-11. **Final call to action:** WhatsApp button and call link.
-12. **Footer:** contacts as published, Instagram, YouTube, copyright.
-13. **Phones only:** a WhatsApp bar fixed to the bottom of the screen.
+6. **The problem, plus an "Our recommendation" card:** beginner, some experience and advanced, each with the programme to start with. A sample feedback card is built but switched off.
+7. **Why Cognasium + founder (cream, added 16 Nov 2026):** five reasons, then the founder card for Nitiksha with her photo and bio.
+8. **Programmes at Cognasium (navy):** classroom photo, tagline, the 4 main programmes (Core, MUN, Create, Triad), the 5 supporting programmes and the vision pillars. Stats and coach cards stay hidden until real data is added.
+9. **Membership models (yellow):** 4 cards (Debate, Creative Writing, MUN, Current Affairs), each with monthly, quarterly and annual fees and who each plan suits. The main button opens that programme's Bigin enquiry form; under it is an "or ask on WhatsApp" link. A "Fee concessions" card sits under the cards.
+10. **Wall of fame (navy, added 16 Nov 2026):** 6 achievement posters (click to open full size) and the "Joining the dots" schools collage.
+11. **Testimonials:** the five published on cognasiumindia.com.
+12. **FAQ:** four questions.
+13. **Final call to action:** WhatsApp button and call link.
+14. **Footer:** contacts as published, Instagram, YouTube, copyright.
+15. **Phones only:** a WhatsApp bar fixed to the bottom of the screen.
 
 **Design notes:**
 - **Colours:** yellow `#FFD51F` and navy `#00174D`, taken from the logo. Text contrast passes WCAG AA.
@@ -212,6 +211,12 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
   - target: children already debating at school (ideally Grades 6–8)
   - 3 months of live online training, then a first international tournament (team, tournament search and registration handled; tournament fees extra)
   - prices of ₹4,500 and ₹2,500 a month
+- **The client's Google Doc "Final landing page outlay" (16 Nov 2026)**, which wins wherever sources differ:
+  - Why Cognasium, the founder bio and photo (`founder-nitiksha.jpg`)
+  - the wall of fame posters (`fame-*.jpg`) and the schools collage
+  - programmes (Core, MUN, Create, Triad, plus 5 supporting programmes), which replace the old website's Book Clubs / Reading Clubs / Workshops list
+  - the full fee table, the level recommendations and the fee concessions
+  - the 3 Bigin enquiry forms (`forms` in `config.js`). The doc's QR code images were not used; the buttons link straight to the forms.
 - **Not used:** any Taivas text, numbers, photos or names. Taivas is a competitor.
 
 ---
@@ -219,10 +224,14 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 ## 8. Still missing (needed from Cognasium)
 
 - [x] Phone/WhatsApp number confirmed: **+91 92206 36572** (16 Nov 2026). The old +91 93151 36811 and the "Main website" footer link were removed.
-- [ ] Confirm the prices of ₹4,500 and ₹2,500, and whether GST is included.
+- [x] Full fee table received in the Google Doc (16 Nov 2026).
+- [ ] Whether GST is included in the fees.
+- [ ] A separate debate enquiry form. The doc gives the "cognasium-60-current-affairs-enquiry" form for debate, so Debate and Current Affairs both use it for now.
+- [ ] Confirm the World Champion line: the doc is read as Arnav Agarwal being both WSDC 2025 Panama World Champion and WSDC Kenya 2026 finalist.
+- [ ] Confirm consent from the families to show the wall of fame posters (they show children's names, photos and schools).
 - [ ] Real upcoming class or demo dates for the countdown.
 - [ ] Real stats (students trained, tournaments, years running).
-- [ ] Coach or founder names, roles and photos.
+- [x] Founder name, bio and photo (Google Doc). Other coach names and photos are still missing.
 - [ ] Real feedback categories and a sample coach note (for the sample feedback card).
 - [ ] The original logo as PNG or SVG. The current one is cropped from a WhatsApp screenshot.
 - [ ] Consent to show the testimonial photos (switched off now; some show children). The classroom photo shows children from behind.

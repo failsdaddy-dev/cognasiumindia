@@ -256,26 +256,65 @@
     if (sf.note) sc.appendChild(el("p", { text: sf.note }));
   }
 
+  /* ---------- why cognasium + founder ---------- */
+  if (C.why && C.why.points) C.why.points.forEach(function (w) {
+    $("why-points").appendChild(el("li", null, [el("strong", { text: w.title }), el("span", { text: w.text })]));
+  });
+  if (C.founder && C.founder.paragraphs) C.founder.paragraphs.forEach(function (t) {
+    $("founder-text").appendChild(el("p", { text: t }));
+  });
+
   /* ---------- pricing ---------- */
   if (C.pricing && C.pricing.enabled && C.pricing.plans.length) {
     $("pricing").hidden = false;
     C.pricing.plans.forEach(function (p) {
-      var a = el("a", { class: "btn btn-3d btn-block" + (p.featured ? " btn-shine" : ""), href: waLink(p.waMessage), target: "_blank", rel: "noopener", text: p.cta });
+      var formUrl = p.form && C.forms ? C.forms[p.form] : "";
+      // primary button: the programme's enquiry form if there is one, otherwise WhatsApp
+      var a = el("a", { class: "btn btn-3d btn-block" + (p.featured ? " btn-shine" : ""), href: formUrl || waLink(p.waMessage), target: "_blank", rel: "noopener", text: p.cta });
+      var wa = formUrl ? el("a", { class: "price-wa", href: waLink(p.waMessage), target: "_blank", rel: "noopener", text: C.pricing.waLabel || "or ask on WhatsApp" }) : null;
+      var tiers = p.tiers ? el("ul", { class: "price-tiers" }, p.tiers.map(function (t) {
+        return el("li", { class: t.best ? "best" : "" }, [
+          el("div", { class: "tier-top" }, [el("strong", { text: t.label }), el("span", { class: "tier-price", text: t.price })]),
+          el("p", { text: t.note })
+        ]);
+      })) : null;
       $("price-grid").appendChild(el("article", { class: "price-card" + (p.featured ? " featured" : "") }, [
         p.badge ? el("span", { class: "price-badge", text: p.badge }) : null,
         el("div", { class: "price-head" }, [
           el("p", { class: "price-name", text: p.name }),
-          el("h3", { class: "price-big", text: p.bigLine })
+          el("h3", { class: "price-big", text: p.bigLine }),
+          p.sub ? el("p", { class: "price-sub", text: p.sub }) : null
         ]),
         el("div", { class: "price-body" }, [
-          el("p", { class: "price-row" }, [el("span", { class: "price-amount", text: p.price }), el("span", { class: "price-per", text: p.per })]),
-          el("ul", { class: "price-points" }, p.points.map(function (t) { return el("li", { text: t }); })),
+          el("p", { class: "price-row" }, [el("span", { class: "price-from", text: "from" }), el("span", { class: "price-amount", text: p.price }), el("span", { class: "price-per", text: p.per })]),
+          p.points ? el("ul", { class: "price-points" }, p.points.map(function (t) { return el("li", { text: t }); })) : null,
+          tiers,
           p.note ? el("p", { class: "price-note", text: p.note }) : null,
-          a
+          a, wa
         ])
       ]));
     });
+    var cc = C.pricing.concessions;
+    if (cc && cc.rows && cc.rows.length) {
+      var cn = $("concessions"); cn.hidden = false;
+      cn.appendChild(el("span", { class: "paper-label", text: cc.label }));
+      cn.appendChild(el("h3", { text: cc.title }));
+      cc.rows.forEach(function (r) {
+        cn.appendChild(el("div", { class: "who-row" }, [el("span", { class: "tag", text: r.tag }), el("strong", { text: r.title }), el("span", { text: r.text })]));
+      });
+    }
   }
+
+  /* ---------- wall of fame ---------- */
+  if (C.wallOfFame && C.wallOfFame.items) C.wallOfFame.items.forEach(function (f) {
+    var alt = f.title + ": " + f.text;
+    $("fame-grid").appendChild(el("li", { class: "fame-card" }, [
+      el("a", { href: f.img, target: "_blank", rel: "noopener", "aria-label": "Open full poster: " + alt }, [
+        el("img", { src: f.img, alt: alt, width: "1040", height: "1280", loading: "lazy" })
+      ]),
+      el("div", null, [el("strong", { text: f.title }), el("span", { text: f.text })])
+    ]));
+  });
 
   /* ---------- social proof ---------- */
   var pr = C.proof;
@@ -292,6 +331,7 @@
     ]);
   }
   pr.programmes.forEach(function (p) { $("programmes").appendChild(iconItem(p.icon, p.name, p.sub)); });
+  (pr.supporting || []).forEach(function (p) { $("supporting").appendChild(iconItem(p.icon, p.name, p.sub)); });
   pr.pillars.forEach(function (p) { $("pillars").appendChild(iconItem(p.icon, p.name)); });
   if (pr.coaches && pr.coaches.length) {
     var cg = $("coaches"); cg.hidden = false;
@@ -420,6 +460,10 @@
     [".steps li", "", 0.12],
     [".paper-card", "", 0],
     [".price-card", "pop", 0.12],
+    [".why-grid li", "pop", 0.07],
+    [".founder-photo, .founder-copy", "", 0.12],
+    [".fame-card", "pop", 0.08],
+    [".fame-schools", "", 0],
     [".stats > div", "pop", 0.08],
     [".proof-photo", "", 0],
     [".logo-grid li", "pop", 0.06],

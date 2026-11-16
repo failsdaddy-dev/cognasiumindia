@@ -174,13 +174,24 @@
       </div>
     </section>
 
-    <!-- 3d. PROGRAMMES / PRICING -->
-    <section class="band-yellow section" id="pricing" aria-labelledby="pricing-title" hidden>
+    <!-- 3c2. WHY COGNASIUM + FOUNDER -->
+    <section class="band-cream section" id="why" aria-labelledby="why-title">
       <div class="wrap">
-        <h2 class="section-label" id="pricing-title" data-text="pricing.label"></h2>
-        <p class="section-intro" data-text="pricing.intro"></p>
-        <div class="price-grid" id="price-grid"></div>
-        <p class="fine" data-text="pricing.footnote"></p>
+        <h2 class="section-label" id="why-title" data-text="why.heading"></h2>
+        <p class="section-intro" data-text="why.intro"></p>
+        <ul class="why-grid" id="why-points"></ul>
+
+        <div class="founder" id="founder">
+          <figure class="founder-photo">
+            <img data-src-from="founder.photo" data-alt-from="founder.photoAlt" loading="lazy" width="857" height="1280" alt="">
+          </figure>
+          <div class="founder-copy">
+            <p class="paper-label" data-text="founder.label"></p>
+            <h3 class="display founder-name" data-text="founder.name"></h3>
+            <p class="founder-role" data-text="founder.role"></p>
+            <div id="founder-text"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -198,13 +209,40 @@
         <p class="tagline" data-text="proof.tagline"></p>
 
         <h3 class="sub-label" data-text="proof.programmesHeading"></h3>
-        <ul class="logo-grid" id="programmes"></ul>
+        <ul class="logo-grid cols-4" id="programmes"></ul>
         <p class="verticals" data-text="proof.verticalsLine"></p>
+
+        <h3 class="sub-label" data-text="proof.supportingHeading"></h3>
+        <ul class="logo-grid" id="supporting"></ul>
 
         <h3 class="sub-label" data-text="proof.pillarsHeading"></h3>
         <ul class="logo-grid pillars" id="pillars"></ul>
 
         <div class="coach-grid" id="coaches" hidden></div>
+      </div>
+    </section>
+
+    <!-- 3d. PROGRAMMES / PRICING -->
+    <section class="band-yellow section" id="pricing" aria-labelledby="pricing-title" hidden>
+      <div class="wrap">
+        <h2 class="section-label" id="pricing-title" data-text="pricing.label"></h2>
+        <p class="section-intro" data-text="pricing.intro"></p>
+        <div class="price-grid" id="price-grid"></div>
+        <article class="paper-card concessions" id="concessions" hidden></article>
+        <p class="fine" data-text="pricing.footnote"></p>
+      </div>
+    </section>
+
+    <!-- 3d2. WALL OF FAME -->
+    <section class="band-navy on-dark section" id="wall-of-fame" aria-labelledby="fame-title">
+      <div class="wrap">
+        <h2 class="section-label" id="fame-title" data-text="wallOfFame.heading"></h2>
+        <p class="section-intro" data-text="wallOfFame.intro"></p>
+        <ul class="fame-grid" id="fame-grid"></ul>
+        <figure class="fame-schools">
+          <img data-src-from="wallOfFame.schools.img" data-alt-from="wallOfFame.schools.alt" loading="lazy" width="1045" height="1280" alt="">
+          <figcaption data-text="wallOfFame.schools.caption"></figcaption>
+        </figure>
       </div>
     </section>
 

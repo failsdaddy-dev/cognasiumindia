@@ -2,7 +2,9 @@
    COGNASIUM INDIA — LANDING PAGE CONFIG
    Everything you might want to edit lives in this one file.
    Rules used while writing it:
-   - Facts come from cognasiumindia.com or the Loom call transcript.
+   - Facts come from cognasiumindia.com, the Loom call transcript, or the
+     client's Google Doc "Final landing page outlay" (16 Nov 2026), which wins
+     wherever they differ (programmes, fees, founder, wall of fame, forms).
    - Anything marked  // MISSING  needs a real value from Cognasium.
      Sections with empty lists / enabled:false stay hidden on the page.
    ===================================================================== */
@@ -63,7 +65,18 @@ window.COGNASIUM_CONFIG = {
   },
 
   /* ---------- Moving ribbon under the hero (real Cognasium programmes) -- */
-  marquee: ["Debating", "Model UN", "Current Affairs", "Creative Writing", "Book Clubs", "Reading Clubs", "Workshops", "Individual Classes"],
+  marquee: ["Parliamentary Debate", "APD · BPD · WSDC", "Model UN", "Creative Writing", "Public Speaking", "Current Affairs", "Pocket Courses", "Individual Classes", "Practice Debates"],
+
+  /* ---------- Enquiry forms (Bigin), from the Google Doc ---------------
+     NOTE: the doc gives the "cognasium-60-current-affairs-enquiry" form as the
+     form for debate training. It is used for both until Cognasium confirms
+     a separate debate form. */
+  forms: {
+    debate: "https://in.bigin.online/org60083190014/forms/cognasium-60-current-affairs-enquiry",
+    creativeWriting: "https://in.bigin.online/org60083190014/forms/cogcreate-creative-writing-consultation-booking",
+    mun: "https://in.bigin.online/org60083190014/forms/mun",
+    currentAffairs: "https://in.bigin.online/org60083190014/forms/cognasium-60-current-affairs-enquiry"
+  },
 
   /* ---------- Countdown -----------------------------------------------
      Shown ONLY if at least one session below is in the future.
@@ -82,10 +95,10 @@ window.COGNASIUM_CONFIG = {
       label: "QUESTION 1 OF 2",
       title: "What do you most want for your child right now?",
       options: [
-        { id: "intl",     icon: "assets/img/icon-debate.png",  title: "Debate internationally", sub: "Already debates at school, wants more", programme: "International Debating Programme" },
-        { id: "start",    icon: "assets/img/icon-speaker.png", title: "Start debating",         sub: "Fluent in English, no debate club at school", programme: "Debate Clubs (Beginner)" },
-        { id: "confident",icon: "assets/img/learner-centred.png", title: "Speak with confidence", sub: "Knows the answer, holds back", programme: "Debate Clubs (Beginner) or Creative Writing" },
-        { id: "news",     icon: "assets/img/icon-news.png",    title: "Understand current affairs", sub: "News, made simple, every week", programme: "Current Affairs Programme" }
+        { id: "intl",     icon: "assets/img/icon-debate.png",  title: "Debate internationally", sub: "Already debates at school, wants more", programme: "Cognasium Core (competitive debate)" },
+        { id: "start",    icon: "assets/img/icon-speaker.png", title: "Start debating",         sub: "Fluent in English, no debate club at school", programme: "Cognasium Triad (public speaking and novice debating)" },
+        { id: "confident",icon: "assets/img/learner-centred.png", title: "Speak with confidence", sub: "Knows the answer, holds back", programme: "Cognasium Triad or Cognasium Create" },
+        { id: "news",     icon: "assets/img/icon-news.png",    title: "Understand current affairs", sub: "News, made simple, every week", programme: "Cognasium 60 (current affairs)" }
       ]
     },
     q2: {
@@ -97,20 +110,20 @@ window.COGNASIUM_CONFIG = {
     // Result card copy, keyed by q1 option id.
     results: {
       intl: {
-        title: "International Debating Programme",
-        text: "Three months of live online training with a specialist coach, then your child's first international tournament. We form and prepare the team, find the tournament and handle registration."
+        title: "Cognasium Core",
+        text: "Competitive parliamentary debate training in APD, BPD and WSDC formats, live online with a specialist coach. On the quarterly plan, three months of training end with your child's first tournament. We form and prepare the team, find the tournament and handle registration."
       },
       start: {
-        title: "Debate Clubs: Beginner",
-        text: "A first, structured look at how debating works: building an argument, rebuttals and speaking on your feet, live online with a trainer."
+        title: "Cognasium Triad",
+        text: "Our foundation course in public speaking and novice-level debating. After the first three months and a first tournament guided by Cognasium, your child moves up to higher levels."
       },
       confident: {
         title: "Start small, then speak",
-        text: "Not every child is ready for a debate stage on day one. Tell us about your child and we'll suggest where to begin: Debate Clubs for beginners, Book Clubs or Creative Writing."
+        text: "Not every child is ready for a debate stage on day one. Cognasium Triad builds public speaking step by step, and Cognasium Create builds confidence through writing. Tell us about your child and we'll suggest where to begin."
       },
       news: {
-        title: "Current Affairs Programme",
-        text: "Simplified news in a WhatsApp community, one theory class a week and a live quiz online every Sunday."
+        title: "Cognasium 60",
+        text: "Our current affairs programme that turns everyday news reading into a game: simplified news in a WhatsApp community, one theory class a week and a live quiz online every Sunday."
       }
     },
     resultLabel: "YOUR NEXT STEP",
@@ -140,18 +153,62 @@ window.COGNASIUM_CONFIG = {
     ]
   },
 
+  /* ---------- Why Cognasium + founder (Google Doc) --------------------- */
+  why: {
+    heading: "WHY COGNASIUM",
+    intro: "Where skill training is only the first step of a long and shared journey.",
+    points: [
+      { title: "A founder who has done it", text: "Started by a debater, researcher and curriculum developer with the vision and the background in this field." },
+      { title: "Personalised learning", text: "Every child is trained for where they are, not where a batch is." },
+      { title: "Outcome-oriented teaching", text: "Training built around results your child can see in their next tournament or submission." },
+      { title: "Only training, nothing else", text: "We are an exclusively training-based organisation. We don't also run competitions, so our focus never splits." },
+      { title: "We trained a World Champion", text: "Arnav Agarwal: World Champion at WSDC 2025 Panama and finalist at WSDC Kenya 2026." }
+    ]
+  },
+  founder: {
+    label: "WHO IS THE FOUNDER AND WHY IT MATTERS",
+    name: "Nitiksha",
+    role: "Founder, Cognasium India",
+    photo: "assets/img/founder-nitiksha.jpg",
+    photoAlt: "Nitiksha, founder of Cognasium India, speaking at a podium",
+    paragraphs: [
+      "Nitiksha debated extensively across formats right through her master's in English Literature. She is not only a debater but also a published independent researcher in the Humanities.",
+      "She worked as the curriculum developer at the Indian Debating League and ran debate bootcamps at other educational institutions, such as Pratarka, before she started Cognasium. She works actively with students at all levels, with a special focus on curriculum design and on faculty who teach with tact.",
+      "It is rare for an education brand to be started by a passionate educator with experience in every area it teaches. You are looking at an educator turned entrepreneur whom you can trust and approach at all times."
+    ]
+  },
+
+  /* ---------- Wall of fame: posters from the Google Doc ---------------- */
+  wallOfFame: {
+    heading: "COGNASIUM WALL OF FAME",
+    intro: "A few of the results our students have brought home.",
+    items: [
+      { img: "assets/img/fame-rishi-wsc-globals.jpg",   title: "Rishi Pinapatruni", text: "World Scholar's Cup Globals, Kuala Lumpur 2026: Gold in Team Debate, Scholar's Bowl and Individual Debate" },
+      { img: "assets/img/fame-asia-novice-wsdc.jpg",    title: "Asia Schools Novice WSDC", text: "Under-18 Champions: Miraya Chitkara, Shagun Sheokand and Riti Jain" },
+      { img: "assets/img/fame-kabir-john-locke.jpg",    title: "Kabir Kapadia", text: "Shortlisted, John Locke Institute Global Essay Prize 2026 (Philosophy)" },
+      { img: "assets/img/fame-ariav-cambridge.jpg",     title: "Ariav Kamat", text: "Honourable Mention, Cambridge Re:Think Essay Competition 2026" },
+      { img: "assets/img/fame-intertext-apd.jpg",       title: "Intertext Schools APD", text: "Ariav Kamat and Keyan Khan's first international break, Arshiya Gupta's second" },
+      { img: "assets/img/fame-rishi-wsc-bangalore.jpg", title: "World Scholar's Cup", text: "Rishi Pinapatruni: Gold in collaborative writing, Silver in team collaborative writing and team debate" }
+    ],
+    schools: {
+      img: "assets/img/fame-schools.jpg",
+      alt: "Logos of schools whose students train at Cognasium, including St. Mary's School Pune, Greenwood High, CHIREC International School and Delhi Public School",
+      caption: "Joining the dots: students from these schools train with Cognasium."
+    }
+  },
+
   /* ---------- Problem + "who we train" card --------------------------- */
   problem: {
     titleLines: ["GOOD AT SCHOOL DEBATES.", "NEVER BEEN TO AN INTERNATIONAL ONE."],
     text:
       "Most schools only run inter-school competitions. International tournaments, online and abroad in countries like Malaysia and the Philippines, are open to school students. " +
       "Most families simply don't know which ones to enter or how to get a team ready.",
-    cardLabel: "WHO WE TRAIN",
-    cardTitle: "Which one is your child?",
+    cardLabel: "OUR RECOMMENDATION",
+    cardTitle: "Which level is your child?",
     rows: [
-      { tag: "ADVANCED", title: "Already debating", text: "Wants to compete internationally. This is our main programme." },
-      { tag: "BEGINNER", title: "Fluent, never debated", text: "School has no debate set-up. Start with Debate Clubs." },
-      { tag: "FIRST STEP", title: "Shy to speak up", text: "Build confidence first through reading, writing and small groups." }
+      { tag: "BEGINNER", title: "No experience in any activity", text: "Start with Cognasium Triad for all-round skill development. Move up to higher levels after the first three months and a first tournament guided by Cognasium." },
+      { tag: "SOME EXPERIENCE", title: "School-level or local/private tournaments", text: "Start with Cognasium Triad to build knowledge, and combine it with one Cognasium Core class for advanced debating." },
+      { tag: "ADVANCED", title: "Accomplished, looking to maximise wins", text: "Take a Virtual Program: buy the workbook, attempt cases and send them to senior Cognasium trainers for review and feedback. Add the mock debates and skip the classes." }
     ],
     // A scored SAMPLE feedback card (like Taivas's) is NOT shown because we don't have
     // Cognasium's real feedback rubric. Fill this in and set enabled:true to show it.
@@ -164,49 +221,93 @@ window.COGNASIUM_CONFIG = {
     }
   },
 
-  /* ---------- Pricing (figures from the Loom call — please confirm) -- */
+  /* ---------- Membership models: programmes and fees (Google Doc) ------
+     Each plan: monthly / quarterly / annual tiers. "form" = Bigin enquiry form
+     (see forms above); the WhatsApp link is always shown as well. */
   pricing: {
     enabled: true,
-    label: "THE PROGRAMMES",
-    intro: "If it sounds right for your child, this is what it costs.",
+    label: "MEMBERSHIP MODELS: PROGRAMMES AND FEES",
+    intro: "Pick a programme, then the plan that matches how sure you are.",
     plans: [
       {
         featured: true,
         badge: "MAIN PROGRAMME",   // small tag on the card; "" to hide
-        name: "INTERNATIONAL DEBATING",
-        bigLine: "3-MONTH PROGRAMME",
+        name: "DEBATE PROGRAMMES",
+        bigLine: "COGNASIUM CORE",
+        sub: "Competitive parliamentary debate: APD, BPD and WSDC formats",
         price: "₹4,500",
         per: "per month",
-        points: [
-          "Live online classes with a specialist coach",
-          "Team formed and prepared for you",
-          "We find the tournament and register you"
+        tiers: [
+          { label: "Monthly", price: "₹4,500", note: "Ideal if you're only testing the waters and your child isn't sure yet." },
+          { label: "Quarterly", price: "₹12,000", note: "Ideal to see change from consistent effort. Comes with the first tournament at the end of the 3 months." },
+          { label: "Annual", price: "₹45,000", note: "Ideal if you're sure your child is invested in debating." }
         ],
-        note: "International tournament fees are charged separately.",
-        cta: "Ask about the next batch",
-        waMessage: "Hi Cognasium! I'd like to know about the next batch of the International Debating Programme."
+        form: "debate",
+        cta: "Book a consultation",
+        waMessage: "Hi Cognasium! I'd like to know more about Cognasium Core (debate programmes) for my child."
       },
       {
-        featured: false,
+        name: "CREATIVE WRITING",
+        bigLine: "COGNASIUM CREATE",
+        sub: "Twice a week, 60 minutes a session. Prep for all major competitions.",
+        price: "₹4,500",
+        per: "per month",
+        tiers: [
+          { label: "Monthly", price: "₹4,500", note: "Ideal if you're only testing the waters and your child isn't sure yet." },
+          { label: "Quarterly", price: "₹12,000", note: "Ideal if you're building skill for a reputed international submission." },
+          { label: "Annual", price: "₹45,000", note: "Ideal if you want to submit to all the major competitions around the year and build a strong profile." }
+        ],
+        form: "creativeWriting",
+        cta: "Book a consultation",
+        waMessage: "Hi Cognasium! I'd like to know more about Cognasium Create (creative writing) for my child."
+      },
+      {
+        name: "MODEL UN",
+        bigLine: "COMPETITIVE MUN",
+        sub: "Training for all major conferences around the year",
+        price: "₹4,500",
+        per: "per month",
+        tiers: [
+          { label: "Monthly", price: "₹4,500", note: "Ideal if you're only testing the waters and your child isn't sure yet." },
+          { label: "Quarterly", price: "₹12,000", note: "Ideal if you're targeting a few months of active MUNs, or want to learn the format." },
+          { label: "Annual", price: "₹45,000", note: "Ideal if you want to maximise credentials and output in one year." }
+        ],
+        form: "mun",
+        cta: "Book a consultation",
+        waMessage: "Hi Cognasium! I'd like to know more about the MUN programme for my child."
+      },
+      {
         name: "CURRENT AFFAIRS",
-        bigLine: "MONTHLY PROGRAMME",
+        bigLine: "COGNASIUM 60",
+        sub: "Gamifies everyday news reading like never before",
         price: "₹2,500",
         per: "per month",
-        points: [
-          "Simplified news in a WhatsApp community",
-          "One theory class a week",
-          "A live online quiz every Sunday"
+        tiers: [
+          { label: "Monthly", price: "₹2,500", note: "Least recommended. Only for children who are not yet inclined to read the news." },
+          { label: "Quarterly", price: "₹6,200", note: "Best for families who, as a rule, pause other activities during exams." },
+          { label: "Annual", price: "₹20,000", best: true, note: "Ideal for everyone: current affairs matter all year round, and it costs substantially less." }
         ],
-        cta: "Ask about Current Affairs",
-        waMessage: "Hi Cognasium! I'd like to know more about the Current Affairs Programme."
+        form: "currentAffairs",
+        cta: "Enquire about Cognasium 60",
+        waMessage: "Hi Cognasium! I'd like to know more about Cognasium 60 (current affairs) for my child."
       }
     ],
-    footnote: "GST and batch timings: message us." // MISSING: confirm whether prices include GST
+    waLabel: "or ask on WhatsApp",
+    concessions: {
+      label: "FEE CONCESSIONS",
+      title: "Ways to pay less",
+      rows: [
+        { tag: "SIBLINGS", title: "Register with a sibling", text: "₹500 less every month on each programme." },
+        { tag: "2+ PROGRAMMES", title: "Register for more than one programme", text: "₹500 less every month on both programmes." },
+        { tag: "QUARTERLY", title: "Register quarterly for any programme", text: "Get current affairs (Cognasium 60) free for 1 month." }
+      ]
+    },
+    footnote: "International tournament fees are charged separately. GST and batch timings: message us." // MISSING: confirm whether prices include GST
   },
 
   /* ---------- Social proof --------------------------------------------- */
   proof: {
-    heading: "WHY FAMILIES CHOOSE COGNASIUM",
+    heading: "PROGRAMMES AT COGNASIUM",
     // MISSING: real numbers (students trained, tournaments, years). Empty = hidden.
     stats: [
       // { value: "500+", label: "students trained" }
@@ -215,15 +316,22 @@ window.COGNASIUM_CONFIG = {
     photoAlt: "A Cognasium session in a classroom, with a trainer speaking to a group of students",
     photoCaption: "A Cognasium session in progress",
     tagline: "You are a step away from starting as a reader and ending up a researcher with a lot of debating escapades in between!",
-    programmesHeading: "ALL OUR PROGRAMMES",
+    programmesHeading: "MAIN PROGRAMMES",
     programmes: [
-      { icon: "assets/img/icon-book.png",       name: "Book Clubs",         sub: "Concepts through Fiction" },
-      { icon: "assets/img/icon-news.png",       name: "Reading Clubs",      sub: "Current Affairs & Debating" },
-      { icon: "assets/img/icon-speaker.png",    name: "Workshops",          sub: "Less time & Lots to Learn" },
-      { icon: "assets/img/icon-debate.png",     name: "Debate Clubs",       sub: "Beginner & Advanced" },
-      { icon: "assets/img/learner-centred.png", name: "Individual Classes", sub: "Tailor Made" }
+      { icon: "assets/img/icon-debate.png",  name: "Cognasium Core",   sub: "Competitive parliamentary debate (APD, BPD, WSDC)" },
+      { icon: "assets/img/nep1.png",         name: "Competitive MUN",  sub: "Training for all major conferences around the year" },
+      { icon: "assets/img/icon-book.png",    name: "Cognasium Create", sub: "Competitive creative writing, prep for all major competitions" },
+      { icon: "assets/img/icon-speaker.png", name: "Cognasium Triad",  sub: "Foundation course in public speaking and novice debating" }
     ],
-    verticalsLine: "Also: Model UN (MUN), Creative Writing and the Current Affairs Programme.",
+    supportingHeading: "SUPPORTING PROGRAMMES FOR BEST RESULTS AND INDIVIDUAL ATTENTION",
+    supporting: [
+      { icon: "assets/img/girl.png",            name: "Pocket Courses",       sub: "20-minute sessions, 2 or 3 times a week, for every skill we teach" },
+      { icon: "assets/img/icon-news.png",       name: "Cognasium 60",         sub: "Current affairs that gamifies everyday news reading" },
+      { icon: "assets/img/learner-centred.png", name: "Individual Classes",   sub: "Targeted prep for events and last-minute tips" },
+      { icon: "assets/img/faculty.png",         name: "Virtual Programs",     sub: "Recorded course, workbook and 2 months of expert support" },
+      { icon: "assets/img/feedback.png",        name: "Practice Debate Packs", sub: "Debate super-senior mentors and get feedback" }
+    ],
+    verticalsLine: "",
     pillarsHeading: "WHAT WE STAND ON",
     pillars: [
       { icon: "assets/img/nep.png",             name: "NEP 2020" },
@@ -274,11 +382,11 @@ window.COGNASIUM_CONFIG = {
       { q: "Are the classes online or in person?",
         a: "Online. Classes are live on Google Meet with a specialist coach, so your child can join from anywhere in India." },
       { q: "My child has never debated. Is this for them?",
-        a: "The international programme is built for children who already debate at school. If your child is new to debating, Debate Clubs (Beginner) is the right start. Tell us about your child on WhatsApp and we'll suggest where to begin." },
+        a: "Yes. Absolute beginners start with Cognasium Triad, our foundation course in public speaking and novice debating, and move up to higher levels after the first three months and a first tournament guided by Cognasium. Tell us about your child on WhatsApp and we'll suggest where to begin." },
       { q: "Are international tournament fees included?",
         a: "No. We find the tournament, form and prepare the team and handle the registration, but the tournament's own fee is charged separately. We'll tell you the amount before you sign up." },
       { q: "What does it cost?",
-        a: "The International Debating Programme is ₹4,500 a month. The Current Affairs Programme is ₹2,500 a month. Message us for batch timings." }
+        a: "Debate, Creative Writing and MUN are ₹4,500 a month, ₹12,000 a quarter or ₹45,000 a year. Current affairs (Cognasium 60) is ₹2,500 a month, ₹6,200 a quarter or ₹20,000 a year. Siblings, and families taking more than one programme, pay ₹500 less a month on each programme. Message us for batch timings." }
     ]
   },
 
