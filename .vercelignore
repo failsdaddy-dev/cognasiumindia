@@ -1,0 +1,5 @@
+# Files kept in GitHub but NOT published on the live site
+README.md
+.gitignore
+_redirects
+.htaccess

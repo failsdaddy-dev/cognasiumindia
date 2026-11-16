@@ -1,0 +1,10 @@
+# Generated upload copies (rebuilt from the main files)
+_upload/
+*.zip
+
+# OS / editor clutter
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.vercel/

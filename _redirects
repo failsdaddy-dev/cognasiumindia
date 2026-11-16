@@ -1,0 +1,5 @@
+# Netlify / Cloudflare Pages redirects.
+# The old WordPress pages (/about-us, /courses, /contact-us, blog posts...) no longer exist.
+# Any address that is not a real file on this site is sent to the homepage instead of a 404.
+# Real files (index.html, css/, js/, assets/) are NOT affected by this rule.
+/*    /    301
