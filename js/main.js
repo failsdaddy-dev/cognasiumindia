@@ -528,8 +528,22 @@
      with a "button" parameter saying which button was tapped. */
   var TR = C.tracking || {};
   document.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
-    if (!a || typeof window.fbq !== "function") return;
+    if (typeof window.fbq !== "function" || !e.target.closest) return;
+
+    /* Enquiry form buttons (Bigin "Book a consultation") → standard "Lead" event */
+    var f = e.target.closest('a[href*="bigin.online"]');
+    if (f) {
+      var card = f.closest(".price-card"), big = card && card.querySelector(".price-big");
+      window.fbq("track", "Lead", {
+        content_name: big ? big.textContent.trim() : "Enquiry form",
+        button_text: (f.textContent || "").trim().slice(0, 60),
+        form: f.getAttribute("href").split("/forms/")[1] || ""
+      });
+      return;
+    }
+
+    var a = e.target.closest('a[href*="wa.me/"]');
+    if (!a) return;
     var params = {
       button: a.id || (a.closest("[id]") ? a.closest("[id]").id : "whatsapp"),
       button_text: (a.textContent || "").trim().slice(0, 60)
