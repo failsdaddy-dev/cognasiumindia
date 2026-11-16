@@ -88,6 +88,10 @@ or `.htaccess` (Hostinger), so visitors don't hit a 404.
 - **Deploying:** in Vercel choose **Add New → Project → Import** `failsdaddy-dev/cognasiumindia`, with Framework Preset = **Other**,
   Root Directory `./`, Build Command empty, and Output Directory empty.
 - **Updating:** edit the files, then `git add -A && git commit -m "…" && git push`. Vercel redeploys automatically.
+- **Commit author matters (Vercel Hobby):** Vercel only auto-deploys commits authored by the project owner, **failsdaddy-dev**.
+  This repo has a repo-local git identity, `failsdaddy-dev <340529014+failsdaddy-dev@users.noreply.github.com>`, set on 16 Nov 2026.
+  Commits made as anyone else (e.g. this PC's global `jayeshpatel2179`) are skipped. Fix: Vercel → Deployments → ⋯ →
+  **Create Deployment** → `main`.
 - **Domain:** in the Vercel project, open **Settings → Domains**, add `cognasiumindia.com` and `www.cognasiumindia.com`, and copy the
   exact records Vercel shows into Hostinger DNS: the `@` **A record** replaces the Hostinger IP, and `www` gets a **CNAME**.
   Leave MX and TXT records alone. Delete any `@` AAAA record.
