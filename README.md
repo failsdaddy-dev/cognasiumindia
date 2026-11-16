@@ -82,14 +82,16 @@ or `.htaccess` (Hostinger), so visitors don't hit a 404.
 - Vercel uses **`vercel.json`** for redirects. It sends the old WordPress paths (/all-courses, /courses/*, /contact,
   /become-instructor, /university-*, /wp/*, …) to `/` and sets caching. Any other unknown address shows **`404.html`**,
   which forwards to the homepage after 2 seconds. `_redirects` and `.htaccess` are ignored on Vercel.
-- **Deploying:** Vercel has no drag-and-drop upload. Put the contents of `_upload/` in a GitHub repository
-  (GitHub website → New repository → "uploading an existing file"), then in Vercel choose
-  **Add New → Project → Import** that repo, with Framework Preset = **Other**, Build Command empty, and Output Directory empty/root.
+- **GitHub repo (public):** https://github.com/failsdaddy-dev/cognasiumindia, branch `main`. This project folder *is* the
+  repo, first pushed 16 Nov 2026. `.vercelignore` keeps `README.md`, `_redirects` and `.htaccess` off the live site, and
+  `.gitignore` keeps `_upload/` and the zip out of git.
+- **Deploying:** in Vercel choose **Add New → Project → Import** `failsdaddy-dev/cognasiumindia`, with Framework Preset = **Other**,
+  Root Directory `./`, Build Command empty, and Output Directory empty.
+- **Updating:** edit the files, then `git add -A && git commit -m "…" && git push`. Vercel redeploys automatically.
 - **Domain:** in the Vercel project, open **Settings → Domains**, add `cognasiumindia.com` and `www.cognasiumindia.com`, and copy the
   exact records Vercel shows into Hostinger DNS: the `@` **A record** replaces the Hostinger IP, and `www` gets a **CNAME**.
   Leave MX and TXT records alone. Delete any `@` AAAA record.
 - **Plan:** Vercel's free Hobby plan is for personal, non-commercial use. A business site is meant to be on **Pro**.
-- **Updating:** edit the files, rebuild `_upload/`, and upload the changed files to the GitHub repo. Vercel redeploys automatically.
 
 ### Option A – Netlify (free) + DNS records in Hostinger
 1. Go to https://app.netlify.com, sign up, then **Add new site → Deploy manually** and drag the **`_upload`** folder.
