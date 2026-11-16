@@ -214,7 +214,7 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 
 ## 8. Still missing (needed from Cognasium)
 
-- [ ] Confirm the WhatsApp number. The page uses +91 92206 36572; the website also lists +91 93151 36811.
+- [x] Phone/WhatsApp number confirmed: **+91 92206 36572** (16 Nov 2026). The old +91 93151 36811 and the "Main website" footer link were removed.
 - [ ] Confirm the prices of ₹4,500 and ₹2,500, and whether GST is included.
 - [ ] Real upcoming class or demo dates for the countdown.
 - [ ] Real stats (students trained, tournaments, years running).

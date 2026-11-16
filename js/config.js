@@ -32,8 +32,8 @@ window.COGNASIUM_CONFIG = {
   },
 
   /* ---------- WhatsApp ------------------------------------------------
-     CONFIRM: +91 92206 36572 is on the WhatsApp profile and in the site footer
-     ("Got questions? Call us"). The site header also lists +91 93151 36811. */
+     +91 92206 36572 is the real, current number (confirmed by the owner, 16 Nov 2026).
+     The old +91 93151 36811 is no longer used anywhere. */
   whatsapp: {
     number: "919220636572",   // digits only, with country code, no +
     // {goal}, {grade}, {programme} are filled from the two-question flow.
@@ -294,14 +294,13 @@ window.COGNASIUM_CONFIG = {
   /* ---------- Footer: as published on cognasiumindia.com --------------- */
   footer: {
     contacts: [
-      { label: "Contact", value: "+91 9315136811", href: "tel:+919315136811" },
+      // +91 93151 36811 removed 16 Nov 2026: owner confirmed +91 92206 36572 is the real, current number.
       { label: "Got questions? Call us", value: "+91 9220636572", href: "tel:+919220636572" },
       { label: "Email", value: "cognasiumindia@gmail.com", href: "mailto:cognasiumindia@gmail.com" }
     ],
     social: [
       { label: "Instagram", href: "https://www.instagram.com/cognasiumindia/" },
-      { label: "Video tour (YouTube)", href: "https://www.youtube.com/watch?v=p93Ynnxz63U" },
-      { label: "Main website", href: "https://cognasiumindia.com/" }
+      { label: "Video tour (YouTube)", href: "https://www.youtube.com/watch?v=p93Ynnxz63U" }
     ],
     copyright: "© {year} Cognasium India. All rights reserved."
   }
