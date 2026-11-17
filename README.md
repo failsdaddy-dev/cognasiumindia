@@ -237,7 +237,7 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 - [ ] Consent to show the testimonial photos (switched off now; some show children). The classroom photo shows children from behind.
 - [ ] Approve the question and answer wording, "Best for Grades 6 to 8", Google Meet, and the "Malaysia and the Philippines" mention.
 - [x] Indexing decision: switched to `index, follow` because the page is now the main homepage (16 Nov 2026).
-- [x] Meta Pixel `4022027848040743` installed in `index.html` (16 Nov 2026). Every WhatsApp button tap sends the custom event `ConversionWhatsAppButton` plus the standard `Contact` event, with a `button` parameter (header-wa, result-wa, final-wa, sticky-wa-btn, price cards). Event name is in `config.js` → `tracking`. Every "Book a consultation" / enquiry form button (Bigin) sends the standard `Lead` event with `content_name` = the programme (e.g. COGNASIUM CORE) and `form` = the form slug.
+- [x] Meta Pixel `4022027848040743` installed in `index.html` (16 Nov 2026). **One button event only (17 Nov 2026): `Lead`.** Every WhatsApp button and every enquiry form button sends `Lead`, with `channel` (whatsapp/form), `content_name` (programme or button id) and `button_text`. The old `ConversionWhatsAppButton` and `Contact` events were removed. The base code still sends `PageView` on page load. Event name: `config.js` → `tracking.event`.
 - [ ] Google Analytics ID (not installed).
 - [ ] A final link-preview image (`assets/img/og-image.jpg`, 1200×630) and the final page address.
 

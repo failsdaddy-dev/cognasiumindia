@@ -520,35 +520,25 @@
     eio.observe(document.querySelector(".site-footer"));
   }
 
-  /* --- WhatsApp click tracking (Meta Pixel) ---
-     Every tap on any WhatsApp link (header, quiz result, price cards, final CTA,
-     sticky bar) sends:
-       - custom event  "ConversionWhatsAppButton"  (name set in config.js → tracking)
-       - standard event "Contact"  (lets Meta Ads optimise without extra setup)
-     with a "button" parameter saying which button was tapped. */
+  /* --- Lead tracking (Meta Pixel) ---
+     ONE event only: every tap on a WhatsApp button (header, quiz result, price
+     cards, final CTA, sticky bar) or an enquiry form button (Bigin) sends the
+     standard Meta event "Lead" (name in config.js → tracking.event).
+     Parameters say where it came from:
+       channel      = "whatsapp" or "form"
+       content_name = programme (price cards) or the button's id
+       button_text  = the button's label */
   var TR = C.tracking || {};
   document.addEventListener("click", function (e) {
     if (typeof window.fbq !== "function" || !e.target.closest) return;
-
-    /* Enquiry form buttons (Bigin "Book a consultation") → standard "Lead" event */
-    var f = e.target.closest('a[href*="bigin.online"]');
-    if (f) {
-      var card = f.closest(".price-card"), big = card && card.querySelector(".price-big");
-      window.fbq("track", "Lead", {
-        content_name: big ? big.textContent.trim() : "Enquiry form",
-        button_text: (f.textContent || "").trim().slice(0, 60),
-        form: f.getAttribute("href").split("/forms/")[1] || ""
-      });
-      return;
-    }
-
-    var a = e.target.closest('a[href*="wa.me/"]');
+    var a = e.target.closest('a[href*="wa.me/"], a[href*="bigin.online"]');
     if (!a) return;
-    var params = {
-      button: a.id || (a.closest("[id]") ? a.closest("[id]").id : "whatsapp"),
+    var card = a.closest(".price-card"), big = card && card.querySelector(".price-big");
+    var holder = a.id ? a : a.closest("[id]");
+    window.fbq("track", TR.event || "Lead", {
+      channel: a.href.indexOf("wa.me/") > -1 ? "whatsapp" : "form",
+      content_name: big ? big.textContent.trim() : (holder ? holder.id : "button"),
       button_text: (a.textContent || "").trim().slice(0, 60)
-    };
-    window.fbq("trackCustom", TR.whatsappEvent || "ConversionWhatsAppButton", params);
-    if (TR.alsoSendContact !== false) window.fbq("track", "Contact", params);
+    });
   });
 })();

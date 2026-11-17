@@ -69,11 +69,10 @@ window.COGNASIUM_CONFIG = {
 
   /* ---------- Tracking ------------------------------------------------
      Meta Pixel 4022027848040743 is installed in index.html <head>.
-     Each WhatsApp button tap fires the custom event below plus the standard
-     "Contact" event. Keep event names without spaces. */
+     Only one button event is used: the standard Meta event "Lead", for every
+     WhatsApp button and every enquiry form button. */
   tracking: {
-    whatsappEvent: "ConversionWhatsAppButton",
-    alsoSendContact: true
+    event: "Lead"   // the ONLY button event: WhatsApp and enquiry-form taps both send "Lead"
   },
 
   /* ---------- Enquiry forms (Bigin), from the Google Doc ---------------
