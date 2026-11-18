@@ -1,12 +1,12 @@
-# Cognasium India – Debate Landing Page
+# Cognasium India – main website (cognasiumindia.com)
 
-A one-page ad landing page for **Cognasium India** (https://cognasiumindia.com/).
-Layout and behaviour follow the reference page https://book.taivasedu.com/book.
+The main website of **Cognasium India**, live at **https://cognasiumindia.com/** (replaced the old WordPress site on 16 Nov 2026).
 Colours, logo, images and words are Cognasium's own.
 
-- **Status:** first build is done. It is waiting for your review and for the items in the "Still missing" list below.
-- **Built on:** 14 Nov 2026.
-- **Not live yet:** nothing has been uploaded or deployed.
+- **This folder:** `C:\Agents\cognasiumindia-site\main-site\`
+- **GitHub:** https://github.com/failsdaddy-dev/cognasiumindia (branch `main`)
+- **Hosting:** Vercel project **cognasiumindia** (Hobby plan, owner `failsdaddy-dev`); DNS at Hostinger
+- **The ad landing page** (international.cognasiumindia.com) is a separate site in `..\international-site\`.
 
 ---
 
@@ -15,115 +15,59 @@ Colours, logo, images and words are Cognasium's own.
 | Part | Language / tool |
 |---|---|
 | Page structure | **HTML5** (`index.html`) |
-| Design, colours, 3D buttons, mobile layout | **CSS3** (`css/styles.css`) |
-| Question flow, WhatsApp links, FAQ, countdown | **Vanilla JavaScript** (`js/main.js`) |
-| All text, prices, phone number, FAQ, dates | **JavaScript config file** (`js/config.js`) |
+| Design, colours, 3D buttons, mobile layout | **CSS3** (`css/styles.css`, `css/animations.css`) |
+| Question flow, WhatsApp links, FAQ, Meta Pixel events | **Vanilla JavaScript** (`js/main.js`) |
+| All text, prices, phone number, FAQ, programmes | **JavaScript config file** (`js/config.js`) |
 | Fonts | Google Fonts: **Bricolage Grotesque** (headings) and **Nunito** (body text) |
 
-There is no framework, no npm, no build step and no database. You upload the files as they are.
+There is no framework, no npm, no build step and no database.
 
 ---
 
 ## 2. How to run it on your computer
 
-**Option A (simplest):** double-click `index.html`. It opens in Chrome or Edge.
-
-**Option B (closer to the live site):** run a small local server, then open http://127.0.0.1:8765/
 ```
-cd C:\Agents\cognasiumindia-site
+cd C:\Agents\cognasiumindia-site\main-site
 python -m http.server 8765
 ```
-Press `Ctrl + C` to stop it.
-
-**To check the phone layout:** in Chrome press `F12`, then `Ctrl + Shift + M`, and pick a phone such as iPhone 12.
+Then open http://127.0.0.1:8765/ and press `Ctrl + C` to stop. To check the phone layout: in Chrome press `F12`, then `Ctrl + Shift + M`.
 
 ---
 
 ## 3. Folder layout
 
 ```
-cognasiumindia-site/
-├── index.html          ← the page (upload)
-├── css/styles.css      ← design and colours (upload)
-├── css/animations.css  ← all animations (upload)
-├── js/config.js        ← ALL editable content (upload)
-├── js/main.js          ← page logic (upload)
-├── assets/             ← favicons + img/ (upload)
-│   └── img/            logo, photos, icons, testimonial photos, og-image
-├── vercel.json         ← Vercel: redirects for old WordPress links + caching
-├── 404.html            ← any unknown address → forwards to the homepage
-├── _redirects          ← Netlify: old WordPress links go to the homepage
-├── .htaccess           ← Hostinger: same redirect rule
-├── _upload/            ← GENERATED clean copy for uploading (don't edit)
-├── cognasium-site-upload.zip ← GENERATED zip of _upload (don't edit)
-└── README.md           ← this file (never uploaded)
+main-site/
+├── index.html          ← the page
+├── 404.html            ← unknown addresses → forwards to the homepage
+├── css/styles.css      ← design and colours
+├── css/animations.css  ← all animations
+├── js/config.js        ← ALL editable content
+├── js/main.js          ← page logic + Meta Pixel button events
+├── assets/             ← favicons, img/ (logo, photos, icons, testimonial photos, wall of fame, og-image)
+│   └── CREDITS.md      ← where every image came from (not published)
+├── vercel.json         ← redirects for old WordPress links, security headers, caching
+├── .vercelignore       ← files kept in GitHub but not published
+└── README.md           ← this file (not published)
 ```
-
-### Files that get hosted
-Only the files in **`_upload/`** (or the same files in **`cognasium-site-upload.zip`**):
-`index.html`, `css/`, `js/`, `assets/`, `_redirects` (Netlify), `.htaccess` (Hostinger).
-
-- `_upload/` and the zip are **generated copies**. Never edit them. Edit the main files, then ask Claude to
-  "rebuild the upload folder and zip", so they get refreshed.
-- `README.md` stays on your computer and is never published.
+`assets/img/logo-mark-512.png` is not used on the page; it is kept as the best-quality copy of the logo.
 
 ---
 
-## 4. Hosting plan: this page replaces the old WordPress site (decided 16 Nov 2026)
+## 4. Hosting: Vercel + DNS records in Hostinger (decided 16 Nov 2026)
 
-The new page becomes **https://cognasiumindia.com/** (the homepage). The old WordPress site is removed.
-The page is now set to `index, follow` with `canonical` and `og:url` = https://cognasiumindia.com/.
-
-**Before switching:** back up WordPress in hPanel (**Websites → Manage → Backups**).
-Old WordPress links (/about-us, /courses, blog posts…) redirect to the homepage via `_redirects` (Netlify)
-or `.htaccess` (Hostinger), so visitors don't hit a 404.
-
-### CHOSEN: Vercel + DNS records in Hostinger (decided 16 Nov 2026)
-- Vercel uses **`vercel.json`** for redirects. It sends the old WordPress paths (/all-courses, /courses/*, /contact,
-  /become-instructor, /university-*, /wp/*, …) to `/` and sets caching. Any other unknown address shows **`404.html`**,
-  which forwards to the homepage after 2 seconds. `_redirects` and `.htaccess` are ignored on Vercel.
-- **GitHub repo (public):** https://github.com/failsdaddy-dev/cognasiumindia, branch `main`. This project folder *is* the
-  repo, first pushed 16 Nov 2026. `.vercelignore` keeps `README.md`, `_redirects` and `.htaccess` off the live site, and
-  `.gitignore` keeps `_upload/` and the zip out of git.
-- **Deploying:** in Vercel choose **Add New → Project → Import** `failsdaddy-dev/cognasiumindia`, with Framework Preset = **Other**,
-  Root Directory `./`, Build Command empty, and Output Directory empty.
+- **Live:** `cognasiumindia.com` (main address) and `www.cognasiumindia.com` (308 redirect to it). DNS at Hostinger:
+  `A @ → 216.198.79.1` and `CNAME www → (Vercel value)`. The Google MX and TXT records are untouched (email).
+- **Old WordPress links** (/all-courses, /courses/*, /contact, /about-us, /wp/*, …) are sent to `/` by `vercel.json`.
+  Any other unknown address shows `404.html`, which forwards to the homepage after 2 seconds.
 - **Updating:** edit the files, then `git add -A && git commit -m "…" && git push`. Vercel redeploys automatically.
-- **Commit author matters (Vercel Hobby):** Vercel only auto-deploys commits authored by the project owner, **failsdaddy-dev**.
-  This repo has a repo-local git identity, `failsdaddy-dev <340529014+failsdaddy-dev@users.noreply.github.com>`, set on 16 Nov 2026.
-  Commits made as anyone else (e.g. this PC's global `jayeshpatel2179`) are skipped. Fix: Vercel → Deployments → ⋯ →
-  **Create Deployment** → `main`.
-- **Domain:** in the Vercel project, open **Settings → Domains**, add `cognasiumindia.com` and `www.cognasiumindia.com`, and copy the
-  exact records Vercel shows into Hostinger DNS: the `@` **A record** replaces the Hostinger IP, and `www` gets a **CNAME**.
-  Leave MX and TXT records alone. Delete any `@` AAAA record.
+- **Commit author matters (Vercel Hobby):** Vercel only auto-deploys commits authored by **failsdaddy-dev**.
+  This repo has a repo-local identity `failsdaddy-dev <340529014+failsdaddy-dev@users.noreply.github.com>`.
+  Commits by anyone else (e.g. this PC's global `jayeshpatel2179`) are skipped. Fix: Vercel → Deployments → ⋯ → **Create Deployment** → `main`.
+- **Moved into `main-site/` on 18 Nov 2026:** the git repo root is this folder, so the Vercel settings (Root Directory `./`) did not change.
+- **Removed 18 Nov 2026** (still in git history): `_upload/` and the zip (old manual-upload copies), `_redirects` (Netlify)
+  and `.htaccess` (Hostinger hosting), which are not used on Vercel.
 - **Plan:** Vercel's free Hobby plan is for personal, non-commercial use. A business site is meant to be on **Pro**.
-
-### Option A – Netlify (free) + DNS records in Hostinger
-1. Go to https://app.netlify.com, sign up, then **Add new site → Deploy manually** and drag the **`_upload`** folder.
-2. **Site configuration → Domain management → Add a domain** and enter `cognasiumindia.com`.
-   Netlify also adds `www.cognasiumindia.com`.
-3. Netlify shows the exact DNS values to use. Copy them from Netlify; don't use values from memory.
-4. In hPanel go to **Domains → cognasiumindia.com → DNS / Nameservers → DNS records**:
-   - `@` (root): **A record** with Netlify's load-balancer IP. Replace the existing `@` A record that points to Hostinger.
-     A root domain cannot use a CNAME.
-   - `www`: **CNAME** pointing to `your-site-name.netlify.app`. Replace the existing `www` record.
-   - Do **not** touch MX, TXT or other records (email and verification).
-5. Wait from 15 minutes up to 24 hours. Then in Netlify, under **Domain management → HTTPS**, check that the
-   free SSL certificate is active.
-6. **To update the site later:** Netlify → Deploys → drag the refreshed `_upload` folder again.
-
-### Option B – keep it on Hostinger (no DNS change at all)
-1. Take the backup, then in File Manager empty `public_html`: move the WordPress files into a folder
-   such as `public_html_old_wordpress` outside it, or delete them only after the backup is confirmed.
-   In hPanel you can also remove the WordPress installation from **Websites → WordPress**.
-2. Upload `cognasium-site-upload.zip` into `public_html` and **Extract**. Delete the zip.
-   `index.html` must sit directly in `public_html`.
-3. Purge the cache (**Website → Cache Manager → Purge All**) and open https://cognasiumindia.com/
-
-You never need to transfer the domain; it stays registered at Hostinger in both options.
-
-### Old plan (no longer used)
-Earlier the page was going to live at cognasiumindia.com/book/ next to WordPress. If you ever go back to that:
-switch `robots` to `noindex, follow`, set `canonical`/`og:url` to `/book/`, and upload into `public_html/book/`.
 
 ---
 
@@ -146,9 +90,9 @@ switch `robots` to `noindex, follow`, set `canonical`/`og:url` to `/book/`, and 
 
 **To swap an image:** put the new file in `assets/img/` and change its path in `config.js`.
 
-**Tracking (Meta Pixel / Google Analytics):** paste the code at the marked comment `TRACKING SCRIPTS GO HERE` in the `<head>` of `index.html`.
+**Tracking:** the Meta Pixel is in the `<head>` of `index.html`. Every WhatsApp and enquiry-form button sends one event, `Lead` (see section 8). Google Analytics is not installed.
 
-**Search engines:** the page is currently `noindex`. To let Google index it, change it to `index, follow` in `index.html`.
+**Search engines:** the page is `index, follow` (it is the homepage).
 
 ---
 
@@ -243,56 +187,10 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 
 ---
 
-## 10. Ad landing page: international.cognasiumindia.com (added 18 Nov 2026)
-
-A short, **one-screen** page for the Meta ad ("Already debating at school? Take it international."). One choice, one button, straight to WhatsApp. It lives in **this same folder and Vercel project** as the main site.
-
-**Files (only these belong to the ad page):**
-- `international.html`: the page
-- `css/international.css`: its styles (the main site's CSS is not loaded)
-- `js/international.js`: level chips, WhatsApp link, Lead event, testimonial rotation, utm/fbclid pass-through
-- `js/international-config.js`: **edit here**: Pixel ID, WhatsApp number and message, the 3 levels, the 3 testimonial lines
-- `assets/img/intl/`: WebP images made from the site's own photos (hero 26 KB, avatars about 2 KB each)
-
-**Addresses:**
-- `https://international.cognasiumindia.com/` serves the page because of the `rewrites` rule in `vercel.json` (it only applies to that host)
-- `https://cognasiumindia.com/international` serves the same page
-
-**On the page, top to bottom:** logo + "Main website" link → photo (shrinks first on short screens) → headline → one supporting line → 3 proof chips (published claims) → "Which level is your child?" with 3 chips → big 3D "Message us on WhatsApp" button → one rotating testimonial (3 published reviews with their published photos, crossfade every 5 s, pauses on hover/touch/focus) → footer (main website, "Nothing you tap here is stored.", ©). `noindex, nofollow`. There is no form and nothing is stored.
-
-**Fonts:** Bricolage Grotesque (headline, condensed) and Nunito (body), the same as the main site.
-
-**WhatsApp message:** "Hi Cognasium! I saw your ad about international debating. / My child's level: … / Please share the details of the programme." The level line is left out if no chip is tapped, so the button always works.
-
-**Meta Pixel (ID in `js/international-config.js`; also in the `<noscript>` image, which can't read config, so change both):**
-- `PageView` on load, with an `event_id`
-- `Lead` **only** when the WhatsApp button is tapped, with an `event_id`, `content_name: "International debating"` and `level` (beginner / school / advanced / not_selected). Never on page load. No Conversions API.
-
-**How to check the Pixel:**
-1. Install the **Meta Pixel Helper** Chrome extension. Open the page, and it should show `PageView`. Tap the WhatsApp button, and `Lead` should appear.
-2. In **Events Manager → your Pixel → Test Events**, enter the page address, open it, tap a level and the button. `PageView` and `Lead` appear within seconds.
-
-**utm / fbclid:** the "Main website" links copy any `utm_*` and `fbclid` from the ad URL onto `https://cognasiumindia.com/`, so a visit that continues to the main site is still attributed to the ad.
-
-**Tested sizes, no scrolling:** 360×640, 360×560, 390×844, 390×700, 430×932, 1366×768, 1920×1080. Only on a landscape phone (640×360) does the card scroll inside itself, and the button is still visible.
-
-**Own GitHub repo (18 Nov 2026):** the ad page is also pushed on its own to **https://github.com/failsdaddy-dev/international-cognasiumindia** (branch `main`) as a separate Vercel project.
-- Edit the files here, then run `python tools/export_international.py`. It copies them into `_international-repo/` (git-ignored, with `international.html` renamed to `index.html`, plus its own `vercel.json` and README).
-- Then commit and push inside `_international-repo/` (identity `failsdaddy-dev` is already set there).
-
-**Going live (when you say so):**
-1. In Vercel → **Add New → Project** → import `failsdaddy-dev/international-cognasiumindia`, Framework **Other**, no build command → Deploy.
-2. In that new project → Settings → Domains → **Add** → `international.cognasiumindia.com` → set it to "Connect to Production" (no redirect).
-3. Vercel will show a record. At Hostinger → DNS records → **Add**: Type **CNAME**, Name **international**, Value **exactly what Vercel shows** (for example `xxxx.vercel-dns-017.com`), TTL 300. Don't touch the existing `@`, `www`, MX or TXT records.
-4. In Vercel, press **Refresh** until it shows "Valid Configuration". HTTPS is issued automatically.
-5. Check: open `https://international.cognasiumindia.com/` on a phone, look for the padlock, and run the Pixel Helper check above. Then use that address as the ad's destination URL.
-
-**Cache:** `/assets/*` is cached for 30 days, so if you replace an image, give it a new file name.
-
 ## 9. Rules for future work on this project
 
-- Work **only** inside `C:\Agents\cognasiumindia-site`.
-- Claude never changes DNS, Hostinger or Netlify settings itself and never uploads. The owner does that.
+- Work **only** inside `C:\Agents\cognasiumindia-site`: the main site in `main-site\`, the ad page in `international-site\`. Never mix files between them.
+- Claude never changes DNS or Hostinger settings itself. Pushing happens only when the owner asks; commits must be authored by `failsdaddy-dev`.
 - No made-up numbers, prices, dates, names or guaranteed-result claims. Missing facts go in `config.js` as hidden entries and in the list above.
-- Don't add tracking scripts until the IDs are supplied.
+- Never use stock photos next to named testimonials or as "Cognasium students".
 - Keep everything editable in `js/config.js`.

@@ -1,8 +1,4 @@
-# Files kept in GitHub but NOT published on the live site
+# Kept in GitHub but NOT published on the live site
 README.md
 .gitignore
-_redirects
-.htaccess
 assets/CREDITS.md
-tools/
-_international-repo/

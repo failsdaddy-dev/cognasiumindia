@@ -128,17 +128,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "international.cognasiumindia.com"
-        }
-      ],
-      "destination": "/international.html"
-    }
   ]
 }
