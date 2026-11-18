@@ -276,9 +276,13 @@ A short, **one-screen** page for the Meta ad ("Already debating at school? Take 
 
 **Tested sizes, no scrolling:** 360×640, 360×560, 390×844, 390×700, 430×932, 1366×768, 1920×1080. Only on a landscape phone (640×360) does the card scroll inside itself, and the button is still visible.
 
+**Own GitHub repo (18 Nov 2026):** the ad page is also pushed on its own to **https://github.com/failsdaddy-dev/international-cognasiumindia** (branch `main`) as a separate Vercel project.
+- Edit the files here, then run `python tools/export_international.py`. It copies them into `_international-repo/` (git-ignored, with `international.html` renamed to `index.html`, plus its own `vercel.json` and README).
+- Then commit and push inside `_international-repo/` (identity `failsdaddy-dev` is already set there).
+
 **Going live (when you say so):**
-1. Push this folder to `failsdaddy-dev/cognasiumindia` as usual. Vercel deploys it with the main site; no new repo or project is needed.
-2. In Vercel → project **cognasiumindia** → Settings → Domains → **Add** → `international.cognasiumindia.com` → set it to "Connect to Production" (no redirect).
+1. In Vercel → **Add New → Project** → import `failsdaddy-dev/international-cognasiumindia`, Framework **Other**, no build command → Deploy.
+2. In that new project → Settings → Domains → **Add** → `international.cognasiumindia.com` → set it to "Connect to Production" (no redirect).
 3. Vercel will show a record. At Hostinger → DNS records → **Add**: Type **CNAME**, Name **international**, Value **exactly what Vercel shows** (for example `xxxx.vercel-dns-017.com`), TTL 300. Don't touch the existing `@`, `www`, MX or TXT records.
 4. In Vercel, press **Refresh** until it shows "Valid Configuration". HTTPS is issued automatically.
 5. Check: open `https://international.cognasiumindia.com/` on a phone, look for the padlock, and run the Pixel Helper check above. Then use that address as the ad's destination URL.
