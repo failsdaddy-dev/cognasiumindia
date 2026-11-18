@@ -234,7 +234,7 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 - [x] Founder name, bio and photo (Google Doc). Other coach names and photos are still missing.
 - [ ] Real feedback categories and a sample coach note (for the sample feedback card).
 - [ ] The original logo as PNG or SVG. The current one is cropped from a WhatsApp screenshot.
-- [ ] Consent to show the testimonial photos (switched off now; some show children). The classroom photo shows children from behind.
+- [x] Testimonial photos switched ON (18 Nov 2026) at the owner's request: the real photos published on the old site, never stock photos. Some show children. The classroom photo shows children from behind.
 - [ ] Approve the question and answer wording, "Best for Grades 6 to 8", Google Meet, and the "Malaysia and the Philippines" mention.
 - [x] Indexing decision: switched to `index, follow` because the page is now the main homepage (16 Nov 2026).
 - [x] Meta Pixel `4022027848040743` installed in `index.html` (16 Nov 2026). **One button event only (17 Nov 2026): `Lead`.** Every WhatsApp button and every enquiry form button sends `Lead`, with `channel` (whatsapp/form), `content_name` (programme or button id) and `button_text`. The old `ConversionWhatsAppButton` and `Contact` events were removed. The base code still sends `PageView` on page load. Event name: `config.js` → `tracking.event`.
@@ -242,6 +242,48 @@ Tip: if a change doesn't show in the browser, press **Ctrl + F5** to reload with
 - [ ] A final link-preview image (`assets/img/og-image.jpg`, 1200×630) and the final page address.
 
 ---
+
+## 10. Ad landing page: international.cognasiumindia.com (added 18 Nov 2026)
+
+A short, **one-screen** page for the Meta ad ("Already debating at school? Take it international."). One choice, one button, straight to WhatsApp. It lives in **this same folder and Vercel project** as the main site.
+
+**Files (only these belong to the ad page):**
+- `international.html`: the page
+- `css/international.css`: its styles (the main site's CSS is not loaded)
+- `js/international.js`: level chips, WhatsApp link, Lead event, testimonial rotation, utm/fbclid pass-through
+- `js/international-config.js`: **edit here**: Pixel ID, WhatsApp number and message, the 3 levels, the 3 testimonial lines
+- `assets/img/intl/`: WebP images made from the site's own photos (hero 26 KB, avatars about 2 KB each)
+
+**Addresses:**
+- `https://international.cognasiumindia.com/` serves the page because of the `rewrites` rule in `vercel.json` (it only applies to that host)
+- `https://cognasiumindia.com/international` serves the same page
+
+**On the page, top to bottom:** logo + "Main website" link → photo (shrinks first on short screens) → headline → one supporting line → 3 proof chips (published claims) → "Which level is your child?" with 3 chips → big 3D "Message us on WhatsApp" button → one rotating testimonial (3 published reviews with their published photos, crossfade every 5 s, pauses on hover/touch/focus) → footer (main website, "Nothing you tap here is stored.", ©). `noindex, nofollow`. There is no form and nothing is stored.
+
+**Fonts:** Bricolage Grotesque (headline, condensed) and Nunito (body), the same as the main site.
+
+**WhatsApp message:** "Hi Cognasium! I saw your ad about international debating. / My child's level: … / Please share the details of the programme." The level line is left out if no chip is tapped, so the button always works.
+
+**Meta Pixel (ID in `js/international-config.js`; also in the `<noscript>` image, which can't read config, so change both):**
+- `PageView` on load, with an `event_id`
+- `Lead` **only** when the WhatsApp button is tapped, with an `event_id`, `content_name: "International debating"` and `level` (beginner / school / advanced / not_selected). Never on page load. No Conversions API.
+
+**How to check the Pixel:**
+1. Install the **Meta Pixel Helper** Chrome extension. Open the page, and it should show `PageView`. Tap the WhatsApp button, and `Lead` should appear.
+2. In **Events Manager → your Pixel → Test Events**, enter the page address, open it, tap a level and the button. `PageView` and `Lead` appear within seconds.
+
+**utm / fbclid:** the "Main website" links copy any `utm_*` and `fbclid` from the ad URL onto `https://cognasiumindia.com/`, so a visit that continues to the main site is still attributed to the ad.
+
+**Tested sizes, no scrolling:** 360×640, 360×560, 390×844, 390×700, 430×932, 1366×768, 1920×1080. Only on a landscape phone (640×360) does the card scroll inside itself, and the button is still visible.
+
+**Going live (when you say so):**
+1. Push this folder to `failsdaddy-dev/cognasiumindia` as usual. Vercel deploys it with the main site; no new repo or project is needed.
+2. In Vercel → project **cognasiumindia** → Settings → Domains → **Add** → `international.cognasiumindia.com` → set it to "Connect to Production" (no redirect).
+3. Vercel will show a record. At Hostinger → DNS records → **Add**: Type **CNAME**, Name **international**, Value **exactly what Vercel shows** (for example `xxxx.vercel-dns-017.com`), TTL 300. Don't touch the existing `@`, `www`, MX or TXT records.
+4. In Vercel, press **Refresh** until it shows "Valid Configuration". HTTPS is issued automatically.
+5. Check: open `https://international.cognasiumindia.com/` on a phone, look for the padlock, and run the Pixel Helper check above. Then use that address as the ad's destination URL.
+
+**Cache:** `/assets/*` is cached for 30 days, so if you replace an image, give it a new file name.
 
 ## 9. Rules for future work on this project
 

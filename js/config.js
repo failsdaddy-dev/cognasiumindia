@@ -358,7 +358,7 @@ window.COGNASIUM_CONFIG = {
      published photos are of children. Set to true once you have consent. */
   testimonials: {
     heading: "WHAT PARENTS AND STUDENTS SAY",
-    usePhotos: false,
+    usePhotos: true,   // real photos published on the old cognasiumindia.com (turned on 18 Nov 2026 at the owner's request)
     items: [
       {
         name: "Shweta Agarwal", role: "Parent", photo: "assets/img/t-shweta.jpg",
